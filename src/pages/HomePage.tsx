@@ -1,5 +1,4 @@
 // src/pages/HomePage.tsx
-import React from "react";
 import Header from "../layout/Header";
 import "../style.css";
 

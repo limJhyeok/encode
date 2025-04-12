@@ -18,7 +18,7 @@ A minimalist AI-powered social trading feed inspired by Zora and Instagram. Buil
 
 ---
 
-## 🚀 Getting Started
+## Lets Go Moon
 
 ```bash
 git clone https://github.com/yourusername/zorabot.git

@@ -1,6 +1,5 @@
 import { useState } from "react";
 import { ChatItem } from "./DMList";
-import { getAIResponse } from "../ai/chatAssistant";
 import { generateReferralLink } from "../utils/ReferralLogic";
 import "../style.css";
 
@@ -14,8 +13,8 @@ const DMChat = ({ chat }: { chat: ChatItem }) => {
         setMessages((prev) => [...prev, userMessage]);
 
         if (chat.type === "bot") {
-            const response = await getAIResponse(input);
-            setMessages((prev) => [...prev, userMessage, `ZoraBot: ${response}`]);
+            const response = await sendMessageToAI(input); // uses your API
+            setMessages((prev) => [...prev, `ZoraBot: ${response}`]);
         }
 
         setInput("");
@@ -25,6 +24,19 @@ const DMChat = ({ chat }: { chat: ChatItem }) => {
         const link = generateReferralLink("ZOR", "0xYourAddress");
         navigator.clipboard.writeText(link);
         alert("📎 Referral link copied!");
+    };
+
+    const sendMessageToAI = async (message: string) => {
+        const res = await fetch("http://localhost:8000/api/chat", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({ message }),
+        });
+
+        const data = await res.json();
+        return data.reply;
     };
 
     return (
