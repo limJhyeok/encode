@@ -1,4 +1,3 @@
-// src/components/DMChat.tsx
 import { useState } from "react";
 import { ChatItem } from "./DMList";
 import { getAIResponse } from "../ai/chatAssistant";
@@ -6,53 +5,49 @@ import { generateReferralLink } from "../utils/ReferralLogic";
 import "../style.css";
 
 const DMChat = ({ chat }: { chat: ChatItem }) => {
-    const [messages, setMessages] = useState<string[]>([]);
     const [input, setInput] = useState("");
+    const [messages, setMessages] = useState<string[]>([]);
 
     const send = async () => {
         if (!input.trim()) return;
-        const userMsg = `You: ${input}`;
-        setMessages((m) => [...m, userMsg]);
+        const userMessage = `You: ${input}`;
+        setMessages((prev) => [...prev, userMessage]);
 
         if (chat.type === "bot") {
-            const reply = await getAIResponse(input);
-            setMessages((m) => [...m, userMsg, `ZoraBot: ${reply}`]);
+            const response = await getAIResponse(input);
+            setMessages((prev) => [...prev, userMessage, `ZoraBot: ${response}`]);
         }
 
         setInput("");
     };
 
-    const shareIdea = () => {
-        const ref = generateReferralLink("ZOR", "0xYourAddrHere");
-        navigator.clipboard.writeText(ref);
-        alert("🔗 Referral link copied!");
+    const share = () => {
+        const link = generateReferralLink("ZOR", "0xYourAddress");
+        navigator.clipboard.writeText(link);
+        alert("📎 Referral link copied!");
     };
 
     return (
-        <div className="dm-chatbox">
-            <h4>{chat.name}</h4>
+        <section className="dm-chatbox">
+            <h3 className="chat-title">{chat.name}</h3>
             <div className="chat-log">
-                {messages.map((m, i) => (
-                    <p key={i}>{m}</p>
+                {messages.map((msg, i) => (
+                    <p key={i}>{msg}</p>
                 ))}
             </div>
-            <input
-                value={input}
-                onChange={(e) => setInput(e.target.value)}
-                placeholder="Type a message..."
-                className="chat-input"
-            />
-            <div style={{ display: "flex", gap: "0.5rem" }}>
-                <button className="primary" onClick={send}>
-                    Send
-                </button>
+            <div className="chat-input-row">
+                <input
+                    value={input}
+                    onChange={(e) => setInput(e.target.value)}
+                    className="chat-input"
+                    placeholder="Type a message..."
+                />
+                <button onClick={send} className="primary">Send</button>
                 {chat.type === "bot" && (
-                    <button className="primary" onClick={shareIdea}>
-                        Share Idea 💡
-                    </button>
+                    <button onClick={share} className="primary">Share</button>
                 )}
             </div>
-        </div>
+        </section>
     );
 };
 

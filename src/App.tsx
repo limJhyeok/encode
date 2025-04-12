@@ -1,16 +1,22 @@
+// src/App.tsx
 import { Routes, Route } from "react-router-dom";
 import HomePage from "./pages/HomePage";
+import DMPage from "./pages/DMPage";
 import UserProfile from "./pages/UserProfile";
-import PostPage from "./pages/PostPage"; // ✅ wrapper handles postId
+import PostPage from "./pages/PostPage";
+import Sidebar from "./layout/Sidebar";
+import "./style.css";
 
-function App() {
+export default function App() {
     return (
-        <Routes>
-            <Route path="/" element={<HomePage />} />
-            <Route path="/user/:id" element={<UserProfile />} />
-            <Route path="/post/:id" element={<PostPage />} /> {/* ✅ fixed */}
-        </Routes>
+        <div className="app-container">
+            <Sidebar />
+            <Routes>
+                <Route path="/" element={<HomePage />} />
+                <Route path="/dm" element={<DMPage />} />
+                <Route path="/user/:id" element={<UserProfile />} />
+                <Route path="/post/:id" element={<PostPage />} />
+            </Routes>
+        </div>
     );
 }
-
-export default App;

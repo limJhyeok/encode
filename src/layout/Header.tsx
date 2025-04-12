@@ -1,6 +1,5 @@
 // src/layout/Header.tsx
 import { Link } from "react-router-dom";
-import zoraLogo from "../assets/zora-icon.png";
 import "../style.css";
 
 const Header = () => {
@@ -8,7 +7,7 @@ const Header = () => {
         <header className="header">
             <div className="header-left">
                 <Link to="/">
-                    <img src={zoraLogo} alt="Zora Logo" className="logo-img" />
+                    <img src="/zora-icon.png" alt="Zora Logo" className="logo-img" />
                 </Link>
                 <input
                     type="text"

@@ -1,7 +1,9 @@
+// src/main.tsx
 import React from "react";
 import ReactDOM from "react-dom/client";
-import App from "./App";
 import { BrowserRouter } from "react-router-dom";
+import App from "./App";
+import "./style.css";
 
 import {
     getDefaultConfig,
@@ -18,9 +20,9 @@ import {
 } from "wagmi/chains";
 
 import "@rainbow-me/rainbowkit/styles.css";
-import "./style.css";
 import { Toaster } from "react-hot-toast";
 
+// ✅ Wagmi config
 const config = getDefaultConfig({
     appName: "Zorabot",
     projectId: "629c053d5acf76d358930aec059fa09c",

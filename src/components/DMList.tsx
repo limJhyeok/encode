@@ -1,4 +1,3 @@
-// src/components/DMList.tsx
 import "../style.css";
 
 export type ChatItem = {
@@ -18,12 +17,12 @@ const DMList = ({
 }) => {
     return (
         <aside className="dm-sidebar">
-            <h3>💬 Messages</h3>
-            <ul className="chat-list">
+            <h3 className="dm-header">Messages</h3>
+            <ul className="dm-chat-list">
                 {chats.map((chat) => (
                     <li
                         key={chat.id}
-                        className={`chat-item ${selectedId === chat.id ? "active" : ""}`}
+                        className={`dm-chat-item ${chat.id === selectedId ? "active" : ""}`}
                         onClick={() => onSelect(chat)}
                     >
                         {chat.name}
