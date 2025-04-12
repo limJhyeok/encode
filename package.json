@@ -22,6 +22,7 @@
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
     "react-hot-toast": "^2.5.2",
+    "react-intersection-observer": "^9.16.0",
     "react-router-dom": "^6.30.0",
     "viem": "^2.26.3",
     "wagmi": "^2.14.16"

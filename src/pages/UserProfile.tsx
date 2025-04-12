@@ -1,81 +1,71 @@
 import { useParams } from "react-router-dom";
-import { useEnsAvatar, useEnsName } from "wagmi";
-import { useState, useEffect } from "react";
-import FeedPost from "../components/FeedPost";
+import { useEffect, useState } from "react";
 import Navbar from "../layout/Navbar";
 import ZoraTabBar from "../layout/ZoraTabBar";
+import FeedPost from "../components/FeedPost";
 
-type MockPost = {
-    id: number;
+type Post = {
+    id: string;
     author: string;
     imageUrl: string;
     description: string;
 };
 
 const UserProfile = () => {
-    const { id } = useParams();
-    const userAddress = id as `0x${string}`;
-
-    const { data: ensName } = useEnsName({ address: userAddress });
-    const { data: avatar } = useEnsAvatar({ name: ensName || undefined });
-
-    const [posts, setPosts] = useState<MockPost[]>([]);
+    const { id } = useParams<{ id: string }>();
+    const [ens, setEns] = useState<string | null>(null);
+    const [avatar, setAvatar] = useState<string | null>(null);
+    const [posts, setPosts] = useState<Post[]>([]);
 
     useEffect(() => {
-        // Mocked posts — replace with Mirror API later
-        setPosts([
-            {
-                id: 1,
-                author: userAddress,
-                imageUrl: "https://picsum.photos/seed/123/600",
-                description: "🚀 Loving the Zora vibes!",
-            },
-            {
-                id: 2,
-                author: userAddress,
-                imageUrl: "https://picsum.photos/seed/456/600",
-                description: "Minted my first AI-generated artwork 🧠",
-            },
-        ]);
-    }, [userAddress]);
+        if (!id) return;
+
+        const lookupENS = async () => {
+            const name = await fetch(`https://ensdata.net/profile/${id}`).then((res) => res.json());
+            setEns(name?.displayName || id);
+            setAvatar(name?.avatar);
+        };
+
+        const fetchPosts = async () => {
+            const fakePosts: Post[] = [
+                {
+                    id: "1",
+                    author: id,
+                    imageUrl: "https://source.unsplash.com/random/300x200?sig=1",
+                    description: "Zora Mirror: New Collection 🧵",
+                },
+                {
+                    id: "2",
+                    author: id,
+                    imageUrl: "https://source.unsplash.com/random/300x200?sig=2",
+                    description: "AI-assisted Alpha dropped 🚀",
+                },
+            ];
+            setPosts(fakePosts);
+        };
+
+        lookupENS();
+        fetchPosts();
+    }, [id]);
 
     return (
         <>
             <Navbar />
-            <div style={{ padding: "1rem", paddingBottom: "4rem" }}>
-                <div
-                    style={{
-                        display: "flex",
-                        alignItems: "center",
-                        gap: "1rem",
-                        marginBottom: "1rem",
-                    }}
-                >
-                    <img
-                        src={avatar || "https://placekitten.com/100/100"}
-                        alt="Avatar"
-                        style={{
-                            width: "64px",
-                            height: "64px",
-                            borderRadius: "50%",
-                            objectFit: "cover",
-                        }}
-                    />
-                    <div>
-                        <h2 style={{ margin: 0 }}>{ensName || userAddress.slice(0, 6) + "..."}</h2>
-                        <p style={{ fontSize: "0.9rem", color: "#aaa" }}>{userAddress}</p>
-                    </div>
+            <div className="container" style={{ marginTop: "1.5rem" }}>
+                <div style={{ textAlign: "center", marginBottom: "1.5rem" }}>
+                    {avatar && (
+                        <img
+                            src={avatar}
+                            alt="avatar"
+                            style={{ width: 80, height: 80, borderRadius: "50%", marginBottom: "0.5rem" }}
+                        />
+                    )}
+                    <h2>{ens}</h2>
+                    <p style={{ color: "#aaa" }}>{id}</p>
                 </div>
 
-                <h3 style={{ marginBottom: "1rem" }}>🖼️ Feed</h3>
-                {posts.map((post, idx) => (
-                    <FeedPost
-                        key={idx}
-                        id={post.id}
-                        author={post.author}
-                        imageUrl={post.imageUrl}
-                        description={post.description}
-                    />
+                {posts.map((post, index) => (
+                    <FeedPost key={index} post={post} />
                 ))}
             </div>
             <ZoraTabBar />

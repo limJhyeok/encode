@@ -1,6 +1,6 @@
 // src/components/DMChat.tsx
 import { useState } from "react";
-import { ChatItem } from "./DmList";
+import { ChatItem } from "./DMList";
 import { getAIResponse } from "../ai/chatAssistant";
 import { generateReferralLink } from "../utils/ReferralLogic";
 import "../style.css";

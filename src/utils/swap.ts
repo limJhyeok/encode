@@ -1,7 +1,7 @@
 // src/swap.ts
 import { parseUnits } from 'viem';
 import { writeContract, waitForTransactionReceipt } from '@wagmi/core';
-import { config } from './wagmiConfig';
+import { config } from '../wagmiConfig';
 import { erc20Abi } from 'viem';
 
 import {

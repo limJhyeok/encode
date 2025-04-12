@@ -1,6 +1,4 @@
-import React from "react"; // 👈 required
-import { Link } from "react-router-dom";
-import zoraLogo from "../assets/zora-icon.png"; // ✅ double check spelling
+import { Link, useLocation } from "react-router-dom";
 import "../style.css";
 import homeIcon from "../assets/zora-icon.png"; // Replace with better icon if you want
 import aiIcon from "../assets/logo.svg";         // Placeholder icons
