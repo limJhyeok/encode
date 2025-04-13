@@ -76,7 +76,7 @@ ZORABOT combines modern web technologies with blockchain integration to deliver 
 
 
    ## Team Members
-   - Cheuk Nung Nick Ng
+   - Nick Ng
    - Buse Itik
    - Jaehyork Lim
    - Sami T
