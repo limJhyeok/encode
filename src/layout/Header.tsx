@@ -4,29 +4,24 @@ import "../style.css";
 
 const Header = () => {
     return (
-        <header className="header">
+        <header className="zora-header">
             <div className="header-left">
-                <Link to="/">
-                    <img src="/zora-icon.png" alt="Zora Logo" className="logo-img" />
+                <Link to="/" className="logo-text">
+                    <strong>Zorak</strong>
                 </Link>
+
                 <input
                     type="text"
                     placeholder="Search NFTs..."
                     className="search-bar"
                 />
             </div>
-            <div className="header-right">
-                <Link to="/" className="nav-link">
-                    Explore
-                </Link>
-                <Link to="/create" className="nav-link">
-                    Create
-                </Link>
-                <Link to="/user/0x123" className="nav-link">
-                    Profile
-                </Link>
-                <button className="connect-btn">Connect Wallet</button>
-            </div>
+
+            <nav className="nav-links header-right">
+                <Link to="/explore" className="nav-link">Explore</Link>
+                <Link to="/create" className="nav-link">Create</Link>
+                <Link to="/profile" className="nav-link">Profile</Link>
+            </nav>
         </header>
     );
 };
