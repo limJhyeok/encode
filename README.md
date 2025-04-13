@@ -26,7 +26,7 @@ ZORAK combines modern web technologies with blockchain integration to deliver a 
 - **Wallet Integration*: Utilizes [RainbowKit](https://www.rainbowkit.com/) and [Wagmi](https://wagmi.sh/) to enable seamless Ethereum wallet connections and interactios.
 - **AI Services*: Incorporates AI models for generating trade signals and powering conversational assistants, enhancing user engagement and insighs.
 - **ENS Resolution*: Automatically resolves Ethereum addresses to human-readable [ENS](https://ens.domains/) names, improving readability and trut.
-- **Referral Mechanism*: Each post includes a unique referral link, promoting organic growth through user sharig.
+- **Referral Mechanism*: Each post includes a unique referral link, promoting organic growth through user sharig.
 
 ### Core Components
 
