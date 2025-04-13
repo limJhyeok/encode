@@ -7,9 +7,7 @@ const Sidebar = () => {
 
     return (
         <aside className="zora-sidebar">
-            <Link to="/" className="sidebar-logo">
-                <img src="/zora-icon.png" alt="Logo" />
-            </Link>
+
             <nav className="sidebar-links">
                 <Link to="/" className={pathname === "/" ? "active" : ""}>
                     <img src="/home.svg" alt="Home" className="sidebar-icon" />

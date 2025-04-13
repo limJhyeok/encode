@@ -22,7 +22,7 @@ import {
 import "@rainbow-me/rainbowkit/styles.css";
 import { Toaster } from "react-hot-toast";
 
-// ✅ Wagmi config
+// ✅ Define chains & config
 const config = getDefaultConfig({
     appName: "Zorabot",
     projectId: "629c053d5acf76d358930aec059fa09c",

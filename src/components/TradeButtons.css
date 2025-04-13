@@ -1,0 +1,32 @@
+.trade-buttons {
+    margin-top: 0.5rem;
+    display: flex;
+    gap: 0.5rem;
+}
+
+.buy-btn,
+.sell-btn {
+    padding: 6px 14px;
+    border: none;
+    border-radius: 6px;
+    font-weight: bold;
+    color: white;
+    cursor: pointer;
+    transition: background 0.2s ease;
+}
+
+.buy-btn {
+    background-color: #28c76f;
+}
+
+.buy-btn:hover {
+    background-color: #21b768;
+}
+
+.sell-btn {
+    background-color: #ea5455;
+}
+
+.sell-btn:hover {
+    background-color: #d94445;
+}
