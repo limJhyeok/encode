@@ -8,7 +8,10 @@ dependencies = [
     "fastapi[standard]>=0.115.12",
     "helium>=5.1.1",
     "matplotlib>=3.10.1",
+    "numpy>=2.2.4",
+    "pandas>=2.2.3",
+    "plotly>=6.0.1",
     "python-dotenv>=1.1.0",
     "selenium>=4.31.0",
-    "smolagents[openai]>=1.13.0",
+    "smolagents[mcp,openai]>=1.13.0",
 ]
