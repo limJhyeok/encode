@@ -1,6 +1,6 @@
 import os
 from fastapi import APIRouter, Request
-from smolagents import CodeAgent, OpenAIServerModel
+from smolagents import CodeAgent, OpenAIServerModel, DuckDuckGoSearchTool
 from tools import (
     fetch_single_coin,
     fetch_multiple_coins,
@@ -79,7 +79,30 @@ async def chat(request: Request):
             api_key=os.environ["OPENAI_API_KEY"],
         )
 
-        agent = CodeAgent(model=model, tools=[
+        analysis_agent = CodeAgent(
+        model=model,
+        tools=[DuckDuckGoSearchTool()],
+        add_base_tools=True,
+        additional_authorized_imports= [
+            "os",
+            "plotly",
+            "matplotlib",
+            "json",
+            "numpy",
+            "pandas",
+        ],
+        name="analysis_agent",
+        description="""
+        Browses the data directory and get the proper csv file to analysis the proper token or you can analysis the data by using numpy, pandas, etc." \
+        You have the authority to use os library. So you can browse my folder. In this way you can know the transaction data of csv.
+        it is in backend/data/ directory
+        """,
+        verbosity_level=0,
+        max_steps=10,
+    )
+        manager_agent = CodeAgent(
+            model = model,
+            tools=[
             fetch_single_coin,
             fetch_multiple_coins,
             fetch_coin_comments,
@@ -90,10 +113,33 @@ async def chat(request: Request):
             fetch_new_coins,
             fetch_last_traded_coins
         ],
-        max_steps = 20
+            managed_agents=[analysis_agent],
+            additional_authorized_imports=[
+                "os"
+                "plotly",
+                "json",
+                "pandas",
+                "numpy",
+            ],
+            planning_interval=5,
+            verbosity_level=2,
+            max_steps=15,
         )
+        # agent = CodeAgent(model=model, tools=[
+        #     fetch_single_coin,
+        #     fetch_multiple_coins,
+        #     fetch_coin_comments,
+        #     fetch_user_profile,
+        #     fetch_top_gainers,
+        #     fetch_top_volume_coins,
+        #     fetch_most_valuable_coins,
+        #     fetch_new_coins,
+        #     fetch_last_traded_coins
+        # ],
+        # max_steps = 20
+        # )
         history.append(f"\n### user: {message}")
-        result = agent.run("".join(history))
+        result = manager_agent.run("".join(history))
         history.append(f"\n### assistant: {str(result)}")
 
         intent, zora_coin = analyze_intent_and_recommendation(message + str(result))
