@@ -30,15 +30,15 @@ ZORABOT combines modern web technologies with blockchain integration to deliver 
 
 ### Core Components
 
-- **AI-Powered Feed*: Delivers auto-generated trading signals with previews, linked to ENS-resolved addresss.
+- **AI-Powered Feed*: Delivers auto-generated trading signals with previews, linked to ENS-resolved addresss.
  - Fetches data from the Zora network, includig:
     - Specific coin information (e.g., Zora Coin)
     - User profiles
     - Top-performing coins over the past 24 hours
     - Analysis the transaction
-- **Conversational Assistant*: An integrated AI chat feature that provides market tips, shares memes, and offers guidance in a friendly mannr.
-- **Messaging System*: Facilitates both one-on-one and group chats, enabling users to connect and communicate with their crypto friends seamlessy.
-- **Mobile-First Design*: Inspired by Zora, the UI is minimalist and optimized for mobile devices, ensuring accessibility and ease of ue.
+- **Conversational Assistant*: An integrated AI chat feature that provides market tips, shares memes, and offers guidance in a friendly mannr.
+- **Messaging System*: Facilitates both one-on-one and group chats, enabling users to connect and communicate with their crypto friends seamlessy.
+- **Mobile-First Design*: Inspired by Zora, the UI is minimalist and optimized for mobile devices, ensuring accessibility and ease of ue.
 
 ## 🛠️ Built With
 - Frontend: React, ite
