@@ -244,7 +244,88 @@ def fetch_top_gainers(count: str) -> dict:
         ...(omit)...
     """
 
-    run_npx_script("zora_api/fetchTopGainers.ts", count)
+    # return run_npx_script("zora_api/fetchTopGainers.ts", count)
+    return """
+✅ STDOUT (normal log):
+Top Gainers (5 coins):
+1. horse (horse)
+   24h Change: 90847.16%
+   Market Cap: 387007.38
+   Volume 24h: 23955.26
+- Name: horse
+- Symbol: horse
+- Description: 
+- Total Supply: 1000000000
+- Market Cap: 387007.38
+- 24h Volume: 23955.26
+- coin address: 0xf1fc9580784335b2613c1392a530c1aa2a69ba3d
+- Creator: 0x3a5df03dd1a001d7055284c2c2c147cbbc78d142
+- Created At: 2025-03-12T16:09:53
+- Unique Holders: 21942
+-----------------------------------
+2. OG BABYFACE (OG BABYFACE)
+   24h Change: 56177.36%
+   Market Cap: 90340.73
+   Volume 24h: 13237.71
+- Name: OG BABYFACE
+- Symbol: OG BABYFACE
+- Description: The original JD Vance BabyFace Edit 
+- Total Supply: 1000000000
+- Market Cap: 90340.73
+- 24h Volume: 13237.71
+- coin address: 0x0acd5006a4ee321be73bbe7a033cec236c9a62db
+- Creator: 0x58c5bcba9f880b4b53a35dcd42626b0e566dd73c
+- Created At: 2025-04-10T16:27:49
+- Unique Holders: 2141
+-----------------------------------
+3. JUST KEEP CLICKING (JUST KEEP CLICKING)
+   24h Change: 14478.38%
+   Market Cap: 52677.93
+   Volume 24h: 2676.58
+- Name: JUST KEEP CLICKING
+- Symbol: JUST KEEP CLICKING
+- Description: Disclosure: This is an experiment testing something in particular. Follow the journey at your own risk. NFA.
+- Total Supply: 1000000000
+- Market Cap: 52677.93
+- 24h Volume: 2676.58
+- coin address: 0x78f11d82f93cf707d98e00870c9debf3601fa397
+- Creator: 0xc2b094887b8a6d45458004350bc428f4cb5104b1
+- Created At: 2025-02-26T22:00:01
+- Unique Holders: 4486
+-----------------------------------
+4. amps.fun (amps.fun)
+   24h Change: 11922.63%
+   Market Cap: 104573.37
+   Volume 24h: 4829.37
+- Name: amps.fun
+- Symbol: amps.fun
+- Description: get paid when friends post
+- Total Supply: 1000000000
+- Market Cap: 104573.37
+- 24h Volume: 4829.37
+- coin address: 0x1b23819885fce964a8b39d364b7462d6e597ae8e
+- Creator: 0xc108e4324b7ec39f7758bd1827953353fc883f88
+- Created At: 2025-02-21T20:48:29
+- Unique Holders: 22311
+-----------------------------------
+5. cow cat (cow cat)
+   24h Change: 8520.82%
+   Market Cap: 8520.82
+   Volume 24h: 23550.66
+- Name: cow cat
+- Symbol: cow cat
+- Description: 
+- Total Supply: 1000000000
+- Market Cap: 8520.82
+- 24h Volume: 23550.66
+- coin address: 0x0be3ae10ba559eadad46f286ccefa2cffbb5fe0a
+- Creator: 0xabc0463b2bd903f291ca08845a16c971ed10be6b
+- Created At: 2025-04-13T03:18:19
+- Unique Holders: 143
+-----------------------------------
+Next page cursor: eyJtYXJrZXRfY2FwX2RlbHRhXzI0aCI6IDg1MjAuODE3MDk4NTM5OTAxLCAiX2lkIjogeyIkb2lkIjogIjY3ZmIyY2ZjMjAwMjgxZWM0YzQyNWRhMSJ9fQ==
+✅ Coin(s) with the highest market cap increase in the last 24 hours. fetched successfully
+"""
 
 @tool
 def fetch_top_volume_coins(count: str) -> dict:
@@ -280,7 +361,43 @@ def fetch_top_volume_coins(count: str) -> dict:
         ...(omit)...
     """
 
-    return run_npx_script("zora_api/fetchTopVolumeCoins.ts", count)
+    # return run_npx_script("zora_api/fetchTopVolumeCoins.ts", count)
+    return """
+✅ STDOUT (normal log):
+Top Volume Coins (5 coins):
+1. horse (horse)
+   Volume 24h: 23991.4
+   Coin Address: 0xf1fc9580784335b2613c1392a530c1aa2a69ba3d
+   Market Cap: 386186.57
+   Holders: 21947
+-----------------------------------
+2. cow cat (cow cat)
+   Volume 24h: 23594.0
+   Coin Address: 0x0be3ae10ba559eadad46f286ccefa2cffbb5fe0a
+   Market Cap: 8503.02
+   Holders: 145
+-----------------------------------
+3. OG BABYFACE (OG BABYFACE)
+   Volume 24h: 13240.32
+   Coin Address: 0x0acd5006a4ee321be73bbe7a033cec236c9a62db
+   Market Cap: 90152.70
+   Holders: 2144
+-----------------------------------
+4. amps.fun (amps.fun)
+   Volume 24h: 4788.78
+   Coin Address: 0x1b23819885fce964a8b39d364b7462d6e597ae8e
+   Market Cap: 104463.68
+   Holders: 22315
+-----------------------------------
+5. Mysterious Megapeak (Mysterious Megapeak)
+   Volume 24h: 4769.53
+   Coin Address: 0x645f167b8ed4235e7d132407341594061e62ae26
+   Market Cap: 2716.42
+   Holders: 244
+-----------------------------------
+Next page cursor: eyJ2b2x1bWVfMjRoIjogNDc2OS41MywgIl9pZCI6IHsiJG9pZCI6ICI2N2ZhODJkZDUyNWI5NDRhY2MyY2E3NzcifX0=
+✅ Coin(s) with the highest trading volume in the last 24 hours.. fetched successfully
+"""
 
 @tool
 def fetch_most_valuable_coins(count: str) -> dict:
@@ -313,7 +430,43 @@ def fetch_most_valuable_coins(count: str) -> dict:
         ...(omit)...
     """
 
-    return run_npx_script("zora_api/fetchMostValuableCoins.ts", count)
+    # return run_npx_script("zora_api/fetchMostValuableCoins.ts", count)
+    return """
+✅ STDOUT (normal log):
+Most Valuable Coins (5 coins):
+1. horse (horse)
+   Coin Address: 0xf1fc9580784335b2613c1392a530c1aa2a69ba3d
+   Market Cap: 386832.05
+   Volume 24h: 24004.94
+   Created: 2025-03-12T16:09:53
+-----------------------------------
+2. amps.fun (amps.fun)
+   Coin Address: 0x1b23819885fce964a8b39d364b7462d6e597ae8e
+   Market Cap: 104358.91
+   Volume 24h: 4562.48
+   Created: 2025-02-21T20:48:29
+-----------------------------------
+3. OG BABYFACE (OG BABYFACE)
+   Coin Address: 0x0acd5006a4ee321be73bbe7a033cec236c9a62db
+   Market Cap: 89603.47
+   Volume 24h: 13265.75
+   Created: 2025-04-10T16:27:49
+-----------------------------------
+4. CREATE (CREATE)
+   Coin Address: 0x8a9cf9ae6536127129727938cb1a6438273e4f94
+   Market Cap: 89533.00
+   Volume 24h: 1292.65
+   Created: 2025-03-05T03:09:21
+-----------------------------------
+5. JUST KEEP CLICKING (JUST KEEP CLICKING)
+   Coin Address: 0x78f11d82f93cf707d98e00870c9debf3601fa397
+   Market Cap: 52557.88
+   Volume 24h: 2682.87
+   Created: 2025-02-26T22:00:01
+-----------------------------------
+Next page cursor: eyJjb2luX3ByaWNlX3VzZGMiOiA1LjI1NTc4Nzk1MzllLTA1LCAiX2lkIjogeyIkb2lkIjogIjY3YzFlOTFmYTQyMjdmMTA0YmRlYzQ3YSJ9fQ==
+✅ Coin(s) with the highest market.. fetched successfully
+"""
 
 @tool
 def fetch_new_coins(count: str) -> dict:
@@ -348,7 +501,43 @@ def fetch_new_coins(count: str) -> dict:
     """
 
 
-    return run_npx_script("zora_api/fetchNewCoins.ts", count)
+    # return run_npx_script("zora_api/fetchNewCoins.ts", count)
+    return """
+✅ STDOUT (normal log):
+New Coins (5 coins):
+1. Profound value-added open (Profound value-added open)
+   Coin Address: 0x5b01b106a960ddbec523eb8b904be25deac93e37
+   Created: 13/04/2025, 08:01:27
+   Creator: 0x8ed2ecfb87ac8cb23b684f6ef2b7efe57c228895
+   Market Cap: 22.44
+-----------------------------------
+2. Danzi needs your love  (Danzi needs your love )
+   Coin Address: 0x45e347ccba0cfd4de93ede95f90c2b39da413c82
+   Created: 13/04/2025, 08:01:01
+   Creator: 0x1b3c7d071fbd4d24c8bcc496ad2f0d760c796bba
+   Market Cap: 22.44
+-----------------------------------
+3. Hello Sunshine (Hello Sunshine)
+   Coin Address: 0x741a0db3831b83f060dd8223d4f8c24dd5c986e3
+   Created: 13/04/2025, 08:00:37
+   Creator: 0x60b581be0902707a338090c28c53caa8cf9a909b
+   Market Cap: 30.64
+-----------------------------------
+4. Automated asymmetric intranet (Automated asymmetric intranet)
+   Coin Address: 0xd8d08163328393e602afda1f8d2b4f9d76abcf03
+   Created: 13/04/2025, 08:00:01
+   Creator: 0x599119452fdcf233eb00850e1f2eaeee745f9dc5
+   Market Cap: 22.44
+-----------------------------------
+5. Reactive analyzing service-desk (Reactive analyzing service-desk)
+   Coin Address: 0x8e88a3f165f5db79e89ae4a0347e2aad64abb3d5
+   Created: 13/04/2025, 07:59:59
+   Creator: 0x3a426e348af05077f0c2c802155ce35c05777146
+   Market Cap: 22.44
+-----------------------------------
+Next page cursor: eyJibG9ja19jb250ZXh0LmJsb2NrX3RpbWVzdGFtcCI6IHsiJGRhdGUiOiAiMjAyNS0wNC0xM1QwNzo1OTo1OVoifSwgIl9pZCI6IHsiJG9pZCI6ICI2N2ZiNmYwMDIwMDI4MWVjNGNjM2Q5NjgifX0=
+✅ coins the most recently created fetched successfully
+"""
 
 @tool
 def fetch_last_traded_coins(count: str) -> dict:
@@ -378,7 +567,38 @@ def fetch_last_traded_coins(count: str) -> dict:
         2. Max Force Feedback  (Max Force Feedback )
         Coin Address: 0x1249067f671e4a35bc51d13263fad178ec12da12
     """
-    return run_npx_script("zora_api/fetchLastTradedCoins.ts", count)
+    # return run_npx_script("zora_api/fetchLastTradedCoins.ts", count)
+    return """
+✅ STDOUT (normal log):
+Recently Traded Coins (5 coins):
+1. Mobil++ (Mobil++)
+   Coin Address: 0xc902a3d2c3ca2f2b985bfa98fa1ed563a605f7ce
+   Market Cap: 273.44
+   Volume 24h: 15.08
+-----------------------------------
+2. zora Ship coin (zora Ship coin)
+   Coin Address: 0x9c95f92ef924775bb6d40a1fdabd090c644cfeb6
+   Market Cap: 1469.45
+   Volume 24h: 0.75
+-----------------------------------
+3. horse (horse)
+   Coin Address: 0xf1fc9580784335b2613c1392a530c1aa2a69ba3d
+   Market Cap: 389871.78
+   Volume 24h: 24009.8
+-----------------------------------
+4. IMG_0344 (IMG_0344)
+   Coin Address: 0x7a3df87e7b2a1486f4af2b3fe2b03e02fc26e7d0
+   Market Cap: 1620.11
+   Volume 24h: 287.98
+-----------------------------------
+5. Base Batches | Homebase (Base Batches | Homebase)
+   Coin Address: 0xd4ebca8d3af0662c23845b2678109d0dc5a6a1f4
+   Market Cap: 2632.33
+   Volume 24h: 60.67
+-----------------------------------
+Next page cursor: eyJibG9ja19jb250ZXh0LmJsb2NrX3RpbWVzdGFtcCI6IHsiJGRhdGUiOiAiMjAyNS0wNC0xM1QwODowMjoyMVoifSwgIl9pZCI6IHsiJG9pZCI6ICI2N2ZiNmY4ZTIwMDI4MWVjNGNjNjgwNjgifX0=
+✅ coins that have been traded most recently fetched successfully
+"""
 
 
 @tool
