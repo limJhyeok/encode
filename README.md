@@ -2,7 +2,7 @@
 
 **ZORABOT** is a minimalist, AI-powered social trading feed inspired by Zora and Instagram. Built for the next generation of crypto-native communities—where alpha, signals, and connection converge.
 
-## 🚀 Features
+## Features
 
 - **AI-Powered Feed** Auto-generates trade signals with ENS-resolved addresses and post preview.
    Fetches real-time data from the Zora network, includin:
@@ -15,7 +15,7 @@
 - **Referral System** Each post has a referral link button you can copy and shar.
 - **ENS Resolution** Automatically resolves Ethereum addresses to ENS username.
 
-## 🧠 System Overview
+## System Overview
 
 ZORABOT combines modern web technologies with blockchain integration to deliver a seamless social trading experiene.
 
