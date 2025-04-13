@@ -1,6 +1,6 @@
-# ZORABOT
+# ZORAK
 
-**ZORABOT** is a minimalist, AI-powered social trading feed inspired by Zora and Instagram. Built for the next generation of crypto-native communities—where alpha, signals, and connection converge.
+**ZORAK** is a minimalist, AI-powered social trading feed inspired by Zora and Instagram. Built for the next generation of crypto-native communities—where alpha, signals, and connection converge.
 
 ## Features
 
@@ -17,7 +17,7 @@
 
 ## System Overview
 
-ZORABOT combines modern web technologies with blockchain integration to deliver a seamless social trading experiene.
+ZORAK combines modern web technologies with blockchain integration to deliver a seamless social trading experiene.
 
 ### Architecture Highlights
 
