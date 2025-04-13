@@ -17,13 +17,13 @@
 
 ## System Overview
 
-ZORABOT combines modern web technologies with blockchain integration to deliver a seamless social trading experiene.
+ZORABOT combines modern web technologies with blockchain integration to deliver a seamless social trading experiene.
 
 ### Architecture Highlights
 
-- **Frontend*: Built with [React](https://reactjs.org/) and [Vite](https://vitejs.dev/) for a fast, modular, and responsive user interfae.
-- **Backend*: Powered by [FastAPI](https://fastapi.tiangolo.com/) for high-performance asynchronous operations and API developmet.
-- **Wallet Integration*: Utilizes [RainbowKit](https://www.rainbowkit.com/) and [Wagmi](https://wagmi.sh/) to enable seamless Ethereum wallet connections and interactios.
+- **Frontend*: Built with [React](https://reactjs.org/) and [Vite](https://vitejs.dev/) for a fast, modular, and responsive user interfae.
+- **Backend*: Powered by [FastAPI](https://fastapi.tiangolo.com/) for high-performance asynchronous operations and API developmet.
+- **Wallet Integration*: Utilizes [RainbowKit](https://www.rainbowkit.com/) and [Wagmi](https://wagmi.sh/) to enable seamless Ethereum wallet connections and interactios.
 - **AI Services*: Incorporates AI models for generating trade signals and powering conversational assistants, enhancing user engagement and insighs.
 - **ENS Resolution*: Automatically resolves Ethereum addresses to human-readable [ENS](https://ens.domains/) names, improving readability and trut.
 - **Referral Mechanism*: Each post includes a unique referral link, promoting organic growth through user sharig.
@@ -55,11 +55,11 @@
    ```bash
    cd backend/
    ```
-2. Synchronize dependencies using [uv](https://docs.astral.sh/u/):
+2. Synchronize dependencies using [uv](https://docs.astral.sh/u/):
    ```bash
    uv sync
    ```
-3. Run the FastAPI development serer:
+3. Run the FastAPI development serer:
    ```bash
    uv run fastapi dev main.py
    ```
