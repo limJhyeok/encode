@@ -69,7 +69,14 @@ ZORABOT combines modern web technologies with blockchain integration to deliver 
    ```bash
    npm install
    ```
-2. Start the development serer:
+2. Start the development serer:
    ```bash
    npm run dev
    ```
+
+
+   ## Team Members
+   - Cheuk Nung Nick Ng
+   - Buse Itik
+   - Jaehyork Lim
+   - Sami T
