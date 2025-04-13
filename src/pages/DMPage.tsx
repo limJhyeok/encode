@@ -1,10 +1,8 @@
 import "../style.css";
-import Header from "../layout/Header";
 import { useEffect, useState } from "react";
 import axios from "axios";
-import { useAccount } from "wagmi";
+import { useAccount, useEnsName } from "wagmi";
 import NewChatModal from "../components/NewChatModal";
-import { useEnsName } from "wagmi";
 import TradeButtons from "../components/TradeButtons";
 import toast from "react-hot-toast";
 
@@ -12,6 +10,8 @@ type Message = {
     sender: string;
     text: string;
     time: string;
+    intent?: "buy" | "sell" | "none" | string;
+    coin?: string;
 };
 
 type Chat = {
@@ -23,8 +23,7 @@ type Chat = {
 
 const DMPage = () => {
     const { address } = useAccount();
-    const currentUser =
-        address || localStorage.getItem("walletAddress") || "you.eth";
+    const currentUser = address || localStorage.getItem("walletAddress") || "you.eth";
     const { data: ensName } = useEnsName({ address });
 
     const [selectedChat, setSelectedChat] = useState("Zorara (AI Bot)");
@@ -32,48 +31,21 @@ const DMPage = () => {
     const [isBotTyping, setIsBotTyping] = useState(false);
     const [isModalOpen, setIsModalOpen] = useState(false);
 
-    const containsTradeAction = (text: string) => {
-        return text.toLowerCase().includes("buy") || text.toLowerCase().includes("sell");
-    };
-
-    useEffect(() => {
-        console.log("isModalOpen state changed:", isModalOpen);
-    }, [isModalOpen]);
-
     const [chats, setChats] = useState<Chat[]>(() => {
         const savedChats = localStorage.getItem("chats");
-        if (savedChats) {
-            return JSON.parse(savedChats);
-        }
+        if (savedChats) return JSON.parse(savedChats);
         return [
             {
                 name: "Zorara (AI Bot)",
                 lastMessage: "NFTs are unique digital assets on the blockchain...",
                 time: "10:33 AM",
                 messages: [
-                    {
-                        sender: "Zorara (AI Bot)",
-                        text: "Hey, how can I help you today?",
-                        time: "10:30 AM",
-                    },
-                    {
-                        sender: "you.eth",
-                        text: "Tell me about NFTs!",
-                        time: "10:32 AM",
-                    },
-                    {
-                        sender: "Zorara (AI Bot)",
-                        text: "NFTs are unique digital assets on the blockchain...",
-                        time: "10:33 AM",
-                    },
-                    {
-                        sender: "you.eth",
-                        text: "Cool, how do I buy one?",
-                        time: "10:34 AM",
-                    },
+                    { sender: "Zorara (AI Bot)", text: "Hey, how can I help you today?", time: "10:30 AM" },
+                    { sender: "you.eth", text: "Tell me about NFTs!", time: "10:32 AM" },
+                    { sender: "Zorara (AI Bot)", text: "NFTs are unique digital assets on the blockchain...", time: "10:33 AM" },
+                    { sender: "you.eth", text: "Cool, how do I buy one?", time: "10:34 AM" }
                 ],
-            },
-            // ... other default chats unchanged
+            }
         ];
     });
 
@@ -97,17 +69,16 @@ const DMPage = () => {
             time: now,
         };
 
-        const updatedChats = chats.map((chat) => {
-            if (chat.name === selectedChat) {
-                return {
+        const updatedChats = chats.map((chat) =>
+            chat.name === selectedChat
+                ? {
                     ...chat,
                     messages: [...chat.messages, newMessage],
                     lastMessage: messageInput,
                     time: now,
-                };
-            }
-            return chat;
-        });
+                }
+                : chat
+        );
 
         setChats(updatedChats);
         setMessageInput("");
@@ -115,24 +86,23 @@ const DMPage = () => {
         if (selectedChat === "Zorara (AI Bot)") {
             setIsBotTyping(true);
             try {
-                const res = await axios.post(
-                    "http://localhost:8000/api/chat",
-                    {
-                        message: messageInput,
-                    },
-                    {
-                        headers: {
-                            "Content-Type": "application/json",
-                        },
-                    }
-                );
+                const res = await axios.post("http://localhost:8000/api/chat", { message: messageInput }, {
+                    headers: { "Content-Type": "application/json" },
+                });
 
                 const reply = res.data.reply || "🤖 (No response)";
+                const intent = res.data.intent || "none";
+                const coin = res.data.zora_coin || null;
+
                 const botMessage: Message = {
                     sender: "Zorara (AI Bot)",
                     text: reply,
                     time: formatTime(new Date()),
+                    intent,
+                    coin,
                 };
+
+                console.log("🤖 Bot message:", botMessage); // Debug
 
                 setChats((prevChats) =>
                     prevChats.map((chat) =>
@@ -185,15 +155,12 @@ const DMPage = () => {
         <div className="main-content">
             <div className="page-container dm-page">
                 <div className="dm-container">
-                    {/* Chat Sidebar */}
+                    {/* Sidebar */}
                     <div className="chat-sidebar">
                         <div className="chat-sidebar-header">
                             <h3>Messages</h3>
                             <button
-                                onClick={() => {
-                                    console.log("Opening modal, setting isModalOpen to true");
-                                    setIsModalOpen(true);
-                                }}
+                                onClick={() => setIsModalOpen(true)}
                                 className="add-friend-btn"
                             >
                                 +
@@ -205,8 +172,7 @@ const DMPage = () => {
                                 .map((chat) => (
                                     <div
                                         key={chat.name}
-                                        className={`chat-preview ${selectedChat === chat.name ? "active" : ""
-                                            }`}
+                                        className={`chat-preview ${selectedChat === chat.name ? "active" : ""}`}
                                         onClick={() => setSelectedChat(chat.name)}
                                     >
                                         <div className="chat-info">
@@ -219,7 +185,7 @@ const DMPage = () => {
                         </div>
                     </div>
 
-                    {/* Main Chat Area */}
+                    {/* Chat Main Area */}
                     <div className="chat-main">
                         {selectedChatData ? (
                             <>
@@ -230,16 +196,14 @@ const DMPage = () => {
                                     {selectedChatData.messages.map((message, index) => (
                                         <div
                                             key={index}
-                                            className={`message ${message.sender === "you.eth" ||
-                                                message.sender === currentUser
+                                            className={`message ${message.sender === currentUser || message.sender === "you.eth"
                                                 ? "message-right"
                                                 : "message-left"
                                                 }`}
                                         >
                                             <p>
                                                 <strong>
-                                                    {message.sender === currentUser ||
-                                                        message.sender === "you.eth"
+                                                    {message.sender === currentUser || message.sender === "you.eth"
                                                         ? "You"
                                                         : message.sender}
                                                 </strong>
@@ -247,12 +211,18 @@ const DMPage = () => {
                                             </p>
                                             <span className="message-time">{message.time}</span>
 
-                                            {/* ✅ Add Trade Buttons when AI mentions buy/sell */}
+                                            {/* ✅ Trade buttons only on last AI message with intent */}
                                             {message.sender === "Zorara (AI Bot)" &&
-                                                containsTradeAction(message.text) && (
+                                                index === selectedChatData.messages.length - 1 &&
+                                                (message.intent?.toLowerCase().includes("buy") ||
+                                                    message.intent?.toLowerCase().includes("sell")) && (
                                                     <TradeButtons
-                                                        onBuy={() => toast.success("Buy action (mocked)")}
-                                                        onSell={() => toast.success("Sell action (mocked)")}
+                                                        onBuy={() =>
+                                                            toast.success(`Buying ${message.coin || "coin"} (mocked)`)
+                                                        }
+                                                        onSell={() =>
+                                                            toast.success(`Selling ${message.coin || "coin"} (mocked)`)
+                                                        }
                                                     />
                                                 )}
                                         </div>

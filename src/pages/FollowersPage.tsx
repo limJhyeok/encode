@@ -1,4 +1,3 @@
-// src/pages/FollowersPage.tsx
 import React, { useEffect, useState } from "react";
 import { useAccount } from "wagmi";
 import "../style.css";
@@ -18,7 +17,6 @@ const FollowersPage: React.FC = () => {
     useEffect(() => {
         if (!address) return;
 
-        // 🧪 Replace with Zora data later – for now, fill with demo users
         setFollowings([
             { address: "0x123...a01", displayName: "zorb.eth" },
             { address: "0x123...a02", displayName: "artfan.eth" },
@@ -62,7 +60,13 @@ const FollowersPage: React.FC = () => {
     return (
         <div className="main-content">
             <div className="page-container followers-page">
-                <h2>👥 Your Network</h2>
+                <h2>Your Network</h2>
+
+                {/* 🔐 Sign in section */}
+                <div className="zora-signin-section">
+                    <button className="zora-signin-btn">Sign in with your Zora account</button>
+                </div>
+
                 <div className="followers-grid">
                     <Section title="Followings" users={followings} />
                     <Section title="Holdings" users={holdings} />
