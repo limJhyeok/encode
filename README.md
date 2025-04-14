@@ -62,3 +62,6 @@ ZORAK combines modern web technologies with blockchain integration to deliver a 
 - [Buse Itik](https://www.linkedin.com/in/buseitik/)
 - [Jaehyork Lim](https://www.linkedin.com/in/jaehyork)
 - [Sami T](https://www.linkedin.com/in/samitahir1/)
+
+## Result
+Won **3rd place** in Encode 2025 Hackathon in London of ZORA competition
