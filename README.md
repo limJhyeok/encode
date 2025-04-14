@@ -17,15 +17,11 @@ ZORAK combines modern web technologies with blockchain integration to deliver a 
 - **Conversational Assistant**: An integrated AI chat feature that provides market tips, shares memes, and offers guidance in a friendly manner.
 - **Messaging System**: Facilitates both one-on-one and group chats, enabling users to connect and communicate with their crypto friends seamlessly.
 - **Mobile-First Design**: Inspired by Zora, the UI is minimalist and optimized for mobile devices, ensuring accessibility and ease of use.
-   
-### 🛠️ Built With
-- Frontend: React, Vite
-- Backend: FastAPI, SmolAgnts
-- Wallet Integration: RainbowKit, Wgmi
-- AI Services: Custom AI models for feed generation and chat function
-- Blockchain: Ethereum network with ENS support
-
-### Architecture Highlights
+- **Friend & Group Chat** Like Instagram DMs, switch between 1-on-1 and group conversation.
+- **Referral System** Each post has a referral link button you can copy and share.
+- **ENS Resolution** Automatically resolves Ethereum addresses to ENS username.
+  
+## 🛠️ Built With
 
 - **Frontend**: Built with [React](https://reactjs.org/) and [Vite](https://vitejs.dev/) for a fast, modular, and responsive user interface.
 - **Backend**: Powered by [FastAPI](https://fastapi.tiangolo.com/) for high-performance asynchronous operations and API developmet.
@@ -33,20 +29,6 @@ ZORAK combines modern web technologies with blockchain integration to deliver a 
 - **AI Services**: Incorporates AI models for generating trade signals and powering conversational assistants. Includes an agent system that analyzes real-time Zora coin data and provides feedback through SmolAgents, enhancing user engagement and decision-making.
 - **ENS Resolution**: Automatically resolves Ethereum addresses to human-readable [ENS](https://ens.domains/) names, improving readability and trut.
 - **Referral Mechanism**: Each post includes a unique referral link, promoting organic growth through user sharing.
-
-## Features
-
-- **AI-Powered Feed** Auto-generates trade signals with ENS-resolved addresses and post preview.
-   Fetches real-time data from the Zora network, including:
-    - Specific coin information (e.g., Zora Coin)
-    - User profiles
-    - Top-performing coins over the past 24 hours
-- **AI Direct Messaging** Built-in AI agent assistant you can talk to like a friend. Perfect for market tips, memes, or divine guidance.
-- **Friend & Group Chat** Like Instagram DMs, switch between 1-on-1 and group conversation.
-- **Minimalist Mobile-Ready UI** Inspired by Zora. Clean, lightweight, and intuitive.
-- **Referral System** Each post has a referral link button you can copy and share.
-- **ENS Resolution** Automatically resolves Ethereum addresses to ENS username.
-
 
 ## ⚙️ Setup Instructions
 
