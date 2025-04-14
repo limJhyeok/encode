@@ -64,4 +64,6 @@ ZORAK combines modern web technologies with blockchain integration to deliver a 
 - [Sami T](https://www.linkedin.com/in/samitahir1/)
 
 ## Result
-Won **3rd place** in Encode 2025 Hackathon in London of ZORA competition
+Won **3rd place** in Encode 2025 Hackathon in London of ZORA for Traders competition
+
+![Competition result](assets/result)
