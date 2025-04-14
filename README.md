@@ -9,7 +9,7 @@ ZORAK combines modern web technologies with blockchain integration to deliver a 
 ### Core Components
 
 - **AI Agent-Powered Feed**: Delivers auto-generated trading signals with previews, linked to ENS-resolved addresses.
- - Fetches data from the Zora network, including:
+   - Fetches data from the Zora network, including:
     - Specific coin information (e.g., Zora Coin)
     - User profiles
     - Top-performing coins over the past 24 hours
